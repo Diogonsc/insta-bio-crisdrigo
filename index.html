@@ -21,7 +21,7 @@
 
 		body {
 			font-family: Arial, sans-serif;
-			background-color: #FFFFFF;
+			background-color: #FFF3FD;
 			min-height: 100vh;
 			margin: 0;
 			padding: 0;
@@ -32,7 +32,7 @@
 			height: 50vh;
 			position: relative;
 			overflow: hidden;
-			background-color: #FFDFFA;
+			background-color: rgb(255, 223, 250);
 			display: flex;
 			justify-content: center;
 			align-items: flex-start;
@@ -53,7 +53,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.3) 90%, rgba(255, 255, 255, 0.938) 100%);
+			background: linear-gradient(to bottom, transparent 0%, rgba(255, 243, 253, 0.1) 50%, rgba(255, 243, 253, 0.3) 75%, rgba(255, 243, 253, 0.7) 100%);
 			pointer-events: none;
 		}
 
@@ -94,6 +94,26 @@
 			transform: scale(1.02);
 		}
 
+		.footer {
+			background-color: #FFFFFF;
+			padding: 1.5rem 0;
+			text-align: center;
+			border-top: 1px solid rgba(255, 243, 253, 0.3);
+			margin-top: 2rem;
+		}
+
+		.footer p {
+			color: #666;
+			font-size: 0.9rem;
+			margin: 0;
+			font-weight: 400;
+		}
+
+		.footer .brand {
+			color: #FF6B9D;
+			font-weight: 600;
+		}
+
 		/* Responsividade para mobile */
 		@media (max-width: 768px) {
 			.banner {
@@ -108,37 +128,86 @@
 			}
 
 			.container {
-				padding: 0 1rem;
+				padding: 0 1rem 2rem 1rem;
 				max-width: 100%;
 			}
 
 			.child {
 				width: 100%;
 			}
+
+			.footer {
+				padding: 1rem 0;
+				margin-top: 1rem;
+			}
+
+			.footer p {
+				font-size: 0.8rem;
+			}
 		}
 	</style>
 </head>
 <body>
 	<div class="banner">
-		<img src="/assets/banner.png" alt="Banner" class="banner-image">
+		<img src="assets/banner.png" alt="Banner" class="banner-image">
 		<div class="banner-gradient"></div>
 	</div>
 	<div class="container">
 		<div class="child">
 			<a href="https://crisdrigomodas.vercel.app/" target="_blank" rel="noopener noreferrer">
-				<img src="/assets/bio-01.svg" alt="Clique para acessar o site principal">
+				<img src="assets/bio-01.svg" alt="Site">
 			</a>
 		</div>
 		<div class="child">
-			<a href="https://api.whatsapp.com/message/I5U6HPAMGQDOM1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer">
-				<img src="/assets/bio-02.svg" alt="Clique para abrir no WhatsApp">
+			<a href="https://wa.me/5521983565098?text=Olá! Gostaria de saber mais sobre os produtos da Cris & Drigo Modas" target="_blank" rel="noopener noreferrer">
+				<img src="assets/bio-02.svg" alt="WhatsApp">
+			</a>
+		</div>
+		<div class="child">
+			<a href="#" target="_blank" rel="noopener noreferrer">
+				<img src="assets/bio-03.svg" alt="Live Shop">
 			</a>
 		</div>
 		<div class="child">
 			<a href="https://maps.app.goo.gl/Q9dezz9NFdc7REjS9" target="_blank" rel="noopener noreferrer">
-				<img src="/assets/bio-03.svg" alt="Clique para abrir no Google Maps">
+				<img src="assets/bio-04.svg" alt="Localização">
 			</a>
 		</div>
 	</div>
+	<footer class="footer">
+		<p>Todos os direitos reservados © 2025 <span class="brand">Cris & Drigo Modas</span></p>
+	</footer>
+
+	<script>
+		// Função para detectar se é dispositivo móvel
+		function isMobile() {
+			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+		}
+
+		// Função para abrir WhatsApp com melhor compatibilidade
+		function openWhatsApp() {
+			const phoneNumber = '5521983565098'; // Substitua pelo número correto
+			const message = encodeURIComponent('Olá! Gostaria de saber mais sobre os produtos da Cris & Drigo Modas');
+			
+			if (isMobile()) {
+				// Para dispositivos móveis, tenta abrir o app diretamente
+				window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${message}`;
+			} else {
+				// Para desktop, usa o link web
+				window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+			}
+		}
+
+		// Adiciona evento de clique ao link do WhatsApp
+		document.addEventListener('DOMContentLoaded', function() {
+			const whatsappLink = document.querySelector('a[href*="wa.me"]');
+			if (whatsappLink) {
+				whatsappLink.addEventListener('click', function(e) {
+					e.preventDefault();
+					openWhatsApp();
+				});
+			}
+		});
+	</script>
 </body>
 </html>
