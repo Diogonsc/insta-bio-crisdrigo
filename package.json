@@ -1,0 +1,22 @@
+{
+  "name": "cris-drigo-bio-site",
+  "version": "1.0.0",
+  "description": "Site de bio para Cris & Drigo Modas",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Build completed'",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "bio",
+    "instagram",
+    "moda",
+    "static-site"
+  ],
+  "author": "Cris & Drigo Modas",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
